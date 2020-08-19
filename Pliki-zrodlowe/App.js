@@ -3,13 +3,14 @@ class App extends React.Component {
     counter: 0
   }
   render() {
-    return (
-      <div>
-        <h1>Hello!</h1>
-      </div>
+    return ( <
+      div >
+      <
+      h1 > Hello! < /h1> <
+      /div>
     );
   }
 }
 
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render( < App / > , document.getElementById('root'))
