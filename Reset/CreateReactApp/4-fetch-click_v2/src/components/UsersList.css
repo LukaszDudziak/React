@@ -1,0 +1,10 @@
+.users {
+  padding: 0;
+  text-align: center;
+  list-style: none;
+}
+
+.users li {
+  border-top: 2px solid gray;
+  padding: 20px 0 0 20px;
+}
