@@ -1,33 +1,52 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  NavLink,
+  Route,
+} from "react-router-dom";
+
+const Home = () => <h1>Strona startowa</h1>;
+const News = () => <h1>Aktualności</h1>;
+const Contact = () => <h1>Kontakt</h1>;
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <header>
             <nav>
               <ul>
                 <li>
                   {/* <a href='/'>start</a> */}
-                  <Link to='/'>start</Link>
+                  <NavLink to='/' exact activeClassName='home_selected'>
+                    start
+                  </NavLink>
                 </li>
                 <li>
                   {/* <a href='/news'>newsy</a> */}
-                  <Link to='/news'>newsy</Link>
+                  <NavLink to='/news' activeClassName='news_selected'>
+                    newsy
+                  </NavLink>
                 </li>
                 <li>
                   {/* <a href='/contact'>kontakt</a> */}
-                  <Link to='/contact'>kontakt</Link>
+                  <NavLink to='/contact' activeClassName='contact_selected'>
+                    kontakt
+                  </NavLink>
                 </li>
               </ul>
             </nav>
           </header>
-          <section>witaj</section>
+          <section>
+            <Route path='/' exact component={Home} />
+            <Route path='/news' component={News} />
+            <Route path='/contact' component={Contact} />
+          </section>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
