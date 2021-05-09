@@ -1,0 +1,13 @@
+body {
+  height: 100vh;
+  text-align: center;
+}
+
+.triangle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-top: 60px solid transparent;
+  border-left: 60px solid black;
+  border-bottom: 60px solid transparent;
+}
