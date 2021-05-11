@@ -25,7 +25,7 @@ export const appReducer = (state = [], action) => {
       );
 
     default:
-      console.warn("Brak tego typu akcji");
+      console.log("Brak tego typu akcji");
       return state;
   }
 };
