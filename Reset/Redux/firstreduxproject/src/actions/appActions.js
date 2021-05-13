@@ -3,7 +3,7 @@ export const DELETE = "DELETE";
 export const EDIT = "EDIT";
 
 //przykład akcji
-const addRate = ({ author, comment, rate }) => ({
+export const addRate = ({ author, comment, rate }) => ({
   type: ADD,
   payload: {
     id: Math.floor(Math.random() * 1000),
@@ -21,7 +21,7 @@ const deleteRate = (id) => ({
   },
 });
 
-const editRate = ({ id, author, comment, rate }) => ({
+export const editRate = ({ id, author, comment, rate }) => ({
   type: EDIT,
   payload: {
     id,

@@ -7,8 +7,12 @@
 //   },
 // });
 
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 
 import { rootReducer } from "../reducers/rootReducer";
+import { validateAuthorMiddleware } from "../middleware/validateAuthorMiddleware";
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(validateAuthorMiddleware)
+);

@@ -1,9 +1,15 @@
 import React, {useState} from 'react';
+// import { connect } from 'react-redux';
+import {useDispatch} from 'react-redux' //2 - funkcyjny
+
+import {addRate, editRate} from './actions/appActions'
 
 const Form = ({
+    // addRate,
     author = '',
     callback,
     comment ='',
+    // editRate,
     id,
     rate = 0,
 }) => {
@@ -11,16 +17,15 @@ const Form = ({
     const [rateInput, setRateInput] = useState(rate);
     const [commentInput, setCommentInput] = useState(comment);
 
+    const dispatch = useDispatch() //2
+
     const handleChangeAuthor = event => setAuthorInput(event.target.value)
     const handleChangeRate = event => setRateInput(event.target.value)
     const handleChangeComment = event => setCommentInput(event.target.value)
 
     const handleOnSubmit = event => {
         event.preventDefault()
-        //minisprawdzenie poprawności formularza
-        if(!authorInput.length){
-            return
-        }
+      
         //utworzenie obiektu z wbitych w formularz wartości, w momencie submita
         const rateObject = {
             author:authorInput,
@@ -29,12 +34,17 @@ const Form = ({
             rate: Number(rateInput),
         }
 
-        console.log(rateObject)
+        // id 
+        // ? (editRate(rateObject))
+        // : (addRate(rateObject));
 
-        id? console.log('Edycja oceny'): console.log('Dodaj ocenę')
+        //2 - funkcyjny
+         id 
+        ? dispatch(editRate(rateObject))
+        : dispatch(addRate(rateObject));
 
-        if(id){
-            callback()
+        if(id&& callback){
+            callback();
         }
 
     }
@@ -63,5 +73,17 @@ const Form = ({
         </form>
      );
 }
+
+// pod klasowy
+
+// const connectActionsToProps = ({
+//     addRate,
+//     editRate,
+// })
+
+// const FormConsumer = connect(null, connectActionsToProps)(Form)
  
+// export default FormConsumer;
+
+//2 - funkcyjny
 export default Form;
